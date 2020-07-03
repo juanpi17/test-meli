@@ -6,10 +6,12 @@ import logo from '../../assets/Logo_ML.png';
 import logo2x from '../../assets/Logo_ML@2x.png.png';
 
 class MainSearchBar extends Component {
+    
     render() {
-        return (
+        const placeholder = "Nunca dejes de buscar";
 
-            <div className="main-bar">
+        return (
+            <header className="nav-header">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-md-1 offset-md-1 my-auto">
@@ -18,10 +20,10 @@ class MainSearchBar extends Component {
                             </a>
                         </div>
                         <div className="col-md-9 pl-0">
-                            <form>
+                            <form className="search-component">
                                 <div className="input-group">
-                                    <input className="form-control rounded-left border border-light" type="search" placeholder="Search" aria-label="Search" />
-                                    <button className="btn btn-light rounded-right border border-light" type="submit" aria-label="Search">
+                                    <input className="form-control rounded-left border border-light no-shadow h-100" type="search" placeholder={placeholder} aria-label="Search" />
+                                    <button className="btn btn-light rounded-right border border-light no-shadow" type="submit" aria-label="Search">
                                         <img src={glass} srcSet={`${glass2x} 2x`} alt='glassIcon' className="glassIcon" />
                                     </button>
                                 </div>
@@ -29,8 +31,7 @@ class MainSearchBar extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </header>
         );
     }
 }

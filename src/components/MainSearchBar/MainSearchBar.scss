@@ -1,6 +1,35 @@
-.main-bar {
+.nav-header {
     background: $primary;
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 64px;
+
+    .no-shadow:focus {
+        box-shadow: none;
+    }
+
+    form.search-component {
+        .input-group {
+            height: 42px;
+        }
+    }
+
+    $placeholder-font-size: 18px;
+    $placeholder-font-color: $secondary;
+    ::-webkit-input-placeholder {
+        font-size: $placeholder-font-size;
+        color: $placeholder-font-color;
+    }
+    ::-moz-placeholder {
+        font-size: $placeholder-font-size;
+        color: $placeholder-font-color;
+    }
+    :-ms-input-placeholder {
+        font-size: $placeholder-font-size;
+        color: $placeholder-font-color;
+    }
+    ::placeholder {
+        font-size: $placeholder-font-size;
+        color: $placeholder-font-color;
+    }
 }
