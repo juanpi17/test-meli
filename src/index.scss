@@ -1,8 +1,11 @@
 // Import custom variables
 @import "variables";
 
-// Import per-component styles
-@import 'components/MainSearchBar/MainSearchBar.scss';
-
 // Import bootstrap styles
 @import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Import per-component styles
+@import 'components/MainSearchBar/MainSearchBar.scss';

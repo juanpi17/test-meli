@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Container from 'react-bootstrap/Container';
 import MainSearchBar from './components/MainSearchBar/MainSearchBar';
 
 class App extends Component {
@@ -7,7 +6,7 @@ class App extends Component {
         return (
             <div className="main">
                 <MainSearchBar />
-                <Container>
+                <div className="container">
                     <div className="card">
                         <div className="card-body">
                         <h5 className="card-title">Steve Jobs</h5>
@@ -15,7 +14,7 @@ class App extends Component {
                         <p className="card-text">Stay Hungry, Stay Foolish</p>
                         </div>
                     </div>
-                </Container>
+                </div>
             </div>
         );
     }
