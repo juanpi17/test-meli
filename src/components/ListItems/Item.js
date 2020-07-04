@@ -1,16 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import shippingIcon from './../../assets/ic_shipping.png';
 import shippingIcon2x from './../../assets/ic_shipping@2x.png.png';
 import imagePlaceholder from './../../assets/image-placeholder.jpg';
 
-class Item extends Component {
+// class Item extends Component {
 
-    render() {
-        return (
+const Item = (props) => {
+    // get the price and apply required format
+    // let price = Math.trunc(props.product.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-            <div className="row item-result">
+    return (
+        <Link className="item-result" to={`/items/1`}>
+        {/* <Link to={`/items/${props.product.id}`}> */}
+            <div className="row item-body">
                 <div className="col-md-auto px-0">
-                    <img src={imagePlaceholder} alt='image-placeholder' className="thumb-image" />
+                    <img src={imagePlaceholder} alt='placeholder' className="thumb-image" />
                 </div>
                 <div className="col-md-6">
                     <div className="price-shipping mt-2">
@@ -27,9 +32,8 @@ class Item extends Component {
                     </div>
                 </div>
             </div>
-
-        )
-    }
+        </Link>
+    )
 
 }
 
