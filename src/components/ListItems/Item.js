@@ -28,7 +28,7 @@ const Item = (props) => {
                 </div>
                 <div className="col-md offset-md-1">
                     <div className="location mt-4">
-                        <span>Capital Federal</span>
+                        <span>{ props.location }</span>
                     </div>
                 </div>
             </div>
