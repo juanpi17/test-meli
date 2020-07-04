@@ -7,5 +7,10 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
+// Import base styles
+@import "base";
+
 // Import per-component styles
 @import 'components/MainSearchBar/MainSearchBar.scss';
+@import 'components/BreadCrumbs/BreadCrumbs.scss';
+@import 'components/ListItems/ListItems.scss';

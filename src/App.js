@@ -1,21 +1,41 @@
 import React, {Component} from 'react';
 import MainSearchBar from './components/MainSearchBar/MainSearchBar';
+import Breadcrumbs from './components/BreadCrumbs/BreadCrumbs';
+import ListItems from './components/ListItems/ListItems';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 class App extends Component {
     render () {
         return (
-            <div className="main">
+            <Router>
                 <MainSearchBar />
-                <div className="container">
-                    <div className="card">
-                        <div className="card-body">
-                        <h5 className="card-title">Steve Jobs</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">steve@apple.com</h6>
-                        <p className="card-text">Stay Hungry, Stay Foolish</p>
+                <div className="main">
+                    <div className="container"> 
+                        <div className="row">
+                            <div className="col-md-10 offset-md-1">
+                                <Breadcrumbs />
+                                <ListItems />
+                            </div>
                         </div>
+                    {/* <Switch>
+                        <Route exact path="/">
+                            <Home />
+                        </Route>
+                        <Route path="/about">
+                            <About />
+                        </Route>
+                        <Route path="/dashboard">
+                            <Dashboard />
+                        </Route>
+                    </Switch> */}
                     </div>
                 </div>
-            </div>
+            </Router>
         );
     }
 }

@@ -1,0 +1,44 @@
+// .results-list {
+//     background-color: $white;
+// }
+
+// .item-result {
+//     padding: 16px 0;
+//     border-bottom: 1px solid black;
+// }
+
+.results-list {
+    padding: 0;
+    background-color: $white;
+}
+
+.item-result {
+    margin: 0 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid $light;
+
+    .thumb-image {
+        width: 180px;
+        border-radius: 5px;
+    }
+
+    .price-shipping {
+        display: flex;
+        align-items: center;
+        // margin-top: 10px;
+        margin-bottom: 32px;
+
+        .price {
+            font-size: 24px;
+        }
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
+    .location {
+        font-size: 12px;
+        color: $secondary;
+    }
+}
