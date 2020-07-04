@@ -14,12 +14,12 @@ class MainSearchBar extends Component {
             <header className="nav-header">
                 <div className="container">
                     <div className="row align-items-center">
-                        <div className="col-md-1 offset-md-1 my-auto">
+                        <div className="col-md-1 my-auto">
                             <a className="navbar-brand" href="#home">
                                 <img src={logo} srcSet={`${logo2x} 2x`} alt='logoIcon' className="logoIcon" />
                             </a>
                         </div>
-                        <div className="col-md-9 pl-0">
+                        <div className="col-md-11 pl-0">
                             <form className="search-component">
                                 <div className="input-group">
                                     <input className="form-control rounded-left border border-light no-shadow h-100" type="search" placeholder={placeholder} aria-label="Search" />

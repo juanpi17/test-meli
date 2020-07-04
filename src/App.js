@@ -13,11 +13,11 @@ class App extends Component {
     render () {
         return (
             <Router>
-                <MainSearchBar />
                 <div className="main">
-                    <div className="container"> 
+                    <MainSearchBar />
+                    <div className="container">
                         <div className="row">
-                            <div className="col-md-10 offset-md-1">
+                            <div className="col-md-12">
                                 <Breadcrumbs />
                                 <ListItems />
                             </div>
