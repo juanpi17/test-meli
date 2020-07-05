@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 import glass from '../../assets/ic_Search.png';
 import glass2x from '../../assets/ic_Search@2x.png.png';
@@ -9,48 +10,39 @@ class MainSearchBar extends Component {
 
     // define state vars
     state = {
-        searchString: '',
-        // performSearch: false
+        searchString: ''
     }
-
 
     // start fresh
-    componentDidMount() {
-        this.state.searchString = '';
-    }
+    // componentDidMount() {
+    //     // this.setState({
+    //     //     searchString: ''
+    //     // })
+    // }
 
-    componentDidUpdate() {
-        // document.title = `You clicked ${this.state.count} times`;
-        console.log(this.state.searchString);
-        // console.log(this.state.searchString.replace(/[&\/\\#,+()$~%.'":*?<>={}]/g,'_'));
-    }
-
+    // componentDidUpdate() {
+    //     // document.title = `You clicked ${this.state.count} times`;
+    //     console.log(this.state.searchString);
+    //     // console.log(this.state.searchString.replace(/[&\/\\#,+()$~%.'":*?<>={}]/g,'_'));
+    // }
     
     handleSubmitSearch = e => {
         e.preventDefault();
 
         // perform a search if the search string has some data and the form was submitted
-        // if (this.state.searchString && this.state.performSearch) {
         if (this.state.searchString) {
             // remove special chars from search string
-            let curedSearchString = this.state.searchString.replace(/[&\/\\#,+()$~%.'":*?<>={}]/g,'_');
+            let curedSearchString = this.state.searchString.replace(/[&\\#,+()$~%.'":*?<>={}]/g,'_');
             // remove multiple spaces and leading/trailing ones
             curedSearchString = curedSearchString.replace(/\s+/g, " ").trim();
+            // update state
+            this.setState({
+                searchString: curedSearchString
+            })
 
-            // perform the actual search
-            this.fetchItems();
-            // this.props.history.push({ pathname: '/items', search: `search=${this.state.search}` });
+            // modify history and programatically call router with the new path
+            this.props.history.push({ pathname: '/items', search: `search=${curedSearchString}` });
         }
-    }
-
-    fetchItems = async () => {
-        const user = await fetch('/users/1')
-            .then(res => res.json()) // Process the incoming data
-
-        // Update usersList state
-        // setUsersList(users)
-        this.setState({ searchString: user });
-
     }
     
     render() {
@@ -61,9 +53,9 @@ class MainSearchBar extends Component {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-md-1 my-auto">
-                            <a className="navbar-brand" href="#home">
+                            <Link to="/" className="navbar-brand">
                                 <img src={logo} srcSet={`${logo2x} 2x`} alt='logoIcon' className="logoIcon" />
-                            </a>
+                            </Link>
                         </div>
                         <div className="col-md-11 pl-0">
                             <form className="search-component"
@@ -88,4 +80,4 @@ class MainSearchBar extends Component {
     }
 }
 
-export default MainSearchBar;
+export default withRouter(MainSearchBar);

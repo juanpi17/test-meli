@@ -6,8 +6,7 @@ import ItemDetails from './components/ItemDetails/ItemDetails';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
   } from "react-router-dom";
 
 class App extends Component {
@@ -20,21 +19,18 @@ class App extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <Breadcrumbs />
-                                <ItemDetails />
-                                {/* <ListItems /> */}
+
+                                {/* Process the different routes to the components that will handle them */}
+                                <Switch>
+                                    <Route exact path="/" />
+                                    <Route exact path="/items" component={ListItems} />
+                                    {/* <Route path="/items?search=:search" component={ListItems} /> */}
+                                    <Route path="/items/:id" component={ItemDetails} />
+                                    <Route render={() => <h2 className="text-center mt-5">404 - Page not found</h2>} />
+                                </Switch>
+
                             </div>
                         </div>
-                    {/* <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-                        <Route path="/about">
-                            <About />
-                        </Route>
-                        <Route path="/dashboard">
-                            <Dashboard />
-                        </Route>
-                    </Switch> */}
                     </div>
                 </div>
             </Router>
