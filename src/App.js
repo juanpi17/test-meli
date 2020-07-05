@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MainSearchBar from './components/MainSearchBar/MainSearchBar';
 import Breadcrumbs from './components/BreadCrumbs/BreadCrumbs';
 import ListItems from './components/ListItems/ListItems';
+import ItemDetails from './components/ItemDetails/ItemDetails';
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,7 +20,8 @@ class App extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <Breadcrumbs />
-                                <ListItems />
+                                <ItemDetails />
+                                {/* <ListItems /> */}
                             </div>
                         </div>
                     {/* <Switch>
