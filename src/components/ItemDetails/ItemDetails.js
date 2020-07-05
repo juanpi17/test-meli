@@ -30,7 +30,7 @@ class ItemDetail extends Component {
                                 <span>Deco Reverse Sombrero Oxford</span>
                             </div>
                             <div className="item-price">
-                                <span>$ 1.980</span>
+                                <span className="integer-part">$ 1.980<span className="cents">00</span></span>
                             </div>
                             <button className="btn btn-info w-100">Comprar</button>
                         </div>
