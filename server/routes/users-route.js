@@ -16,5 +16,8 @@ const router = express.Router()
 // i.e.: '/all' will become '/users/all'
 router.get('/all', usersController.usersGetAll)
 
+// get only 1 user
+router.get('/:id', usersController.usersGetOne)
+
 // Export router
 module.exports = router
