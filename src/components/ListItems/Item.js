@@ -15,7 +15,7 @@ const Item = (props) => {
         
         <Link className="item-result" to={`/items/${item.id}`}>
 
-        {console.log(props)}
+        {/* {console.log(props)} */}
         {/* <Link to={`/items/${props.product.id}`}> */}
             <div className="row item-body">
                 <div className="col-md-auto px-0">

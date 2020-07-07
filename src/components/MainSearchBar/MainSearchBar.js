@@ -10,7 +10,8 @@ class MainSearchBar extends Component {
 
     // define state vars
     state = {
-        searchString: ''
+        searchString: '',
+        startNewSearch: false
     }
 
     // start fresh
@@ -20,30 +21,80 @@ class MainSearchBar extends Component {
     //     // })
     // }
 
-    // componentDidUpdate() {
-    //     // document.title = `You clicked ${this.state.count} times`;
-    //     console.log(this.state.searchString);
-    //     // console.log(this.state.searchString.replace(/[&\/\\#,+()$~%.'":*?<>={}]/g,'_'));
-    // }
-    
-    handleSubmitSearch = e => {
-        e.preventDefault();
+    componentDidUpdate() {
+        // document.title = `You clicked ${this.state.count} times`;
+        // console.log(this.state.searchString);
+        if (this.state.startNewSearch) {
+            this.startSearch();
+            // this.setState({ startNewSearch: false });
+        }
+        // console.log(this.state.searchString.replace(/[&\/\\#,+()$~%.'":*?<>={}]/g,'_'));
+    }
 
+    // prepare string to start the search
+    startSearch = () => {
+        console.log(this.state.searchString);
         // perform a search if the search string has some data and the form was submitted
         if (this.state.searchString) {
             // remove special chars from search string
             let curedSearchString = this.state.searchString.replace(/[&\\#,+()$~%.'":*?<>={}]/g,'_');
             // remove multiple spaces and leading/trailing ones
             curedSearchString = curedSearchString.replace(/\s+/g, " ").trim();
-            // update state
-            this.setState({
-                searchString: curedSearchString
-            })
+            // // update state
+            // this.setState({
+            //     searchString: curedSearchString
+            // })
 
             // modify history and programatically call router with the new path
             this.props.history.push({ pathname: '/items', search: `search=${curedSearchString}` });
+
+            // set status of search as false
+            this.setState({ startNewSearch: false });
         }
+    } 
+    
+    handleSubmitSearch = e => {
+        e.preventDefault();
+
+        // set status of search as true to start searching
+        this.setState({ startNewSearch: true });
+        this.startSearch();
+
+        // // perform a search if the search string has some data and the form was submitted
+        // if (this.state.searchString) {
+        //     // remove special chars from search string
+        //     let curedSearchString = this.state.searchString.replace(/[&\\#,+()$~%.'":*?<>={}]/g,'_');
+        //     // remove multiple spaces and leading/trailing ones
+        //     curedSearchString = curedSearchString.replace(/\s+/g, " ").trim();
+        //     // update state
+        //     this.setState({
+        //         searchString: curedSearchString
+        //     })
+
+        //     // modify history and programatically call router with the new path
+        //     this.props.history.push({ pathname: '/items', search: `search=${curedSearchString}` });
+        // }
     }
+
+
+    // handleSubmitSearch = e => {
+    //     e.preventDefault();
+
+    //     // perform a search if the search string has some data and the form was submitted
+    //     if (this.state.searchString) {
+    //         // remove special chars from search string
+    //         let curedSearchString = this.state.searchString.replace(/[&\\#,+()$~%.'":*?<>={}]/g,'_');
+    //         // remove multiple spaces and leading/trailing ones
+    //         curedSearchString = curedSearchString.replace(/\s+/g, " ").trim();
+    //         // update state
+    //         this.setState({
+    //             searchString: curedSearchString
+    //         })
+
+    //         // modify history and programatically call router with the new path
+    //         this.props.history.push({ pathname: '/items', search: `search=${curedSearchString}` });
+    //     }
+    // }
     
     render() {
         const placeholder = "Nunca dejes de buscar";

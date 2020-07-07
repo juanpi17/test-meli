@@ -26,12 +26,14 @@ exports.itemsGetAll = async (req, res) => {
                         lastname: "Lepore"
                     },
 
-                    categories: response.data.filters[0].values[0].path_from_root.map(category => {
+                    // verify if filters exist
+                    categories: (response.data.filters !== undefined && response.data.filters[0] !== undefined) 
+                                ? response.data.filters[0].values[0].path_from_root.map(category => {
                         return category.name
-                    }),
+                    }) : [],
 
                     // I've added 2 extra fields to the mentioned on the description of the test: 
-                    // picture2x (to avoid image blurriness), and location (to make it appear on the result list)
+                    // picture2x (to avoid image pixelation), and location (to make it appear on the result list)
                     items: response.data.results.map(result => {
                         return {
                             id: result.id,
