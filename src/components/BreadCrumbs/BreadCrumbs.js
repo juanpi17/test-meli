@@ -1,26 +1,18 @@
-import React from 'react';
-import {
-    Route,
-    Link
-} from "react-router-dom";
+import React from 'react'
 
-const Breadcrumbs = (props) => (
-    <div className="breadcrumbs">
-        <ul className='container'>
-            <Route path='/:path' component={BreadcrumbsItem} />
-        </ul>
-    </div>
-)
-
-const BreadcrumbsItem = ({ match, ...rest }) => (
-    <React.Fragment>
-        <li className={match.isExact ? 'breadcrumb-active' : undefined}>
-            <Link to={match.url || ''}>
-                {match.url}
-            </Link>
-        </li>
-        <Route path={`${match.url}/:path`} component={BreadcrumbsItem} />
-    </React.Fragment>
-)
+const Breadcrumbs = ({ categories }) => {
+    return (
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-custom">
+                <li key={'category-product'} className="breadcrumb-item">Productos</li>
+                {
+                    (categories.length) 
+                    ?  categories.map((category, index) => <li key={index} className="breadcrumb-item">{category}</li>)
+                    :  ''
+                }
+            </ol>
+        </nav>
+    )
+}
 
 export default Breadcrumbs;

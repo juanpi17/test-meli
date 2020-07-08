@@ -1,0 +1,10 @@
+.breadcrumb-custom {
+    font-size: 14px;
+    color: $secondary;
+    padding: 16px 0;
+    margin: 0;
+
+    .breadcrumb-item + .breadcrumb-item::before {
+        color: $secondary;
+    }
+}

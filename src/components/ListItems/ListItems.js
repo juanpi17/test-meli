@@ -8,6 +8,7 @@ class ListItems extends Component {
 
     state = {
         results: [],
+        categories: [],
         loading: true,
 
         // results: [
@@ -47,9 +48,10 @@ class ListItems extends Component {
             .then(res => res.json())
             .then(results => this.setState({
                 results: results.items,
+                categories: results.categories,
                 loading: false
             }));
-            // .then(results => console.log(results.items));
+            // .then(results => console.log(results.categories));
         // // fetchItems = async () => {
         // const user = await fetch('/users/1')
         //     .then(res => res.json()) // Process the incoming data
@@ -69,12 +71,13 @@ class ListItems extends Component {
                 (this.state.loading)
                 ? <p>Loading</p>
                 : <React.Fragment>
-                    <Breadcrumbs />
+                    {console.log(this.state.categories)}
+                    <Breadcrumbs categories={ this.state.categories } />
                     <div className="container results-list">
                         {this.state.results && 
                         this.state.results.length > 0 && 
                         this.state.results.map( item => (
-                            <Item key={ item.id } item={ item } />
+                            <Item key={ item.id } item={ item } categories={ this.state.categories } />
                         ))}
                     </div>
                 </React.Fragment>

@@ -35,3 +35,6 @@ $dark:      $gray-900;
 $info:      $blue;
 $warning:   $yellow;
 $danger:    $red;
+
+// change default breadcumb divider
+$breadcrumb-divider: quote(">");
