@@ -43,7 +43,7 @@ const Item = (props) => {
                     </div>
                 </div>
                 <div className="col-md offset-md-1">
-                    <div className="location mt-4">
+                    <div className="location mt-2 mt-md-4">
                         <span>{item.location}</span>
                     </div>
                 </div>

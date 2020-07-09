@@ -1,3 +1,7 @@
+/* 
+    Overwrite bootstrap variables to adapt them based on requests of the Meli's test
+*/
+
 // custom gutter: 16px padding-left and 16px padding-right
 $grid-gutter-width: 32px;
 
@@ -35,6 +39,26 @@ $dark:      $gray-900;
 $info:      $blue;
 $warning:   $yellow;
 $danger:    $red;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);
 
 // change default breadcumb divider
 $breadcrumb-divider: quote(">");
