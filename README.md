@@ -1,7 +1,5 @@
 # Test práctico de Front End para Mercado Libre 
 
-Este proyecto fue desarrollado utilizando la herramienta [Create React App](https://github.com/facebook/create-react-app).
-
 ## Tecnologías utilizadas
 
 * Node.js v12.18.2
