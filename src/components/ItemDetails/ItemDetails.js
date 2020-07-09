@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from 'react-loader-spinner';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
 
 class ItemDetails extends Component {
@@ -48,7 +49,12 @@ class ItemDetails extends Component {
             <section className="details-section">
             {
                 (this.state.loading)
-                ? <p>Loading</p>
+                ? <Loader 
+                    className="text-center"
+                    type="ThreeDots"
+                    color="#999999"
+                    height={100}
+                    width={100} />
                 : <React.Fragment>
                     <Breadcrumbs categories={ this.state.categories } />
                     <div className="item-details">

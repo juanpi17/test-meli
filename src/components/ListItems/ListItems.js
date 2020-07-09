@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Loader from 'react-loader-spinner';
 import Item from './Item';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
 
@@ -39,7 +40,12 @@ class ListItems extends Component {
             <section className="results-section">
             {
                 (this.state.loading)
-                ? <p>Loading</p>
+                ? <Loader 
+                    className="text-center"
+                    type="ThreeDots"
+                    color="#999999"
+                    height={100}
+                    width={100} />
                 : <React.Fragment>
                     <Breadcrumbs categories={ this.state.categories } />
                     <div className="container results-list">
