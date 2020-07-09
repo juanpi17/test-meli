@@ -2,13 +2,16 @@ import React, {Component} from 'react';
 import MainSearchBar from './components/MainSearchBar/MainSearchBar';
 import ListItems from './components/ListItems/ListItems';
 import ItemDetails from './components/ItemDetails/ItemDetails';
+import NotFound from './components/NotFound/NotFound';
 import {
     BrowserRouter as Router,
     Switch,
     Route
-  } from "react-router-dom";
+} from "react-router-dom";
+
 
 class App extends Component {
+
     render () {
         return (
             <Router>
@@ -23,7 +26,7 @@ class App extends Component {
                                     <Route exact path="/" />
                                     <Route exact path="/items" component={ListItems} />
                                     <Route exact path="/items/:id" component={ItemDetails} />
-                                    <Route render={() => <h2 className="text-center mt-5">404 - Page not found</h2>} />
+                                    <Route component={NotFound} />
                                 </Switch>
 
                             </div>

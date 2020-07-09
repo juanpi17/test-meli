@@ -23,7 +23,8 @@ class ItemDetails extends Component {
                 details: results.item,
                 categories: this.state.categories.concat(results.item.title),
                 loading: false
-            }));
+            }))
+            .catch(error => console.log(error));
     };
 
     // modify price to adjust it to the requested format (thousands separator)

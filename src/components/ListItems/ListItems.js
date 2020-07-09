@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Loader from 'react-loader-spinner';
 import Item from './Item';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
+import queryString from 'query-string';
 
 class ListItems extends Component {
 
@@ -13,13 +14,36 @@ class ListItems extends Component {
 
     componentDidUpdate(prevProps) {
         // only perform search if the search parameter has changed
-        if (prevProps.location.search !== this.props.location.search) {
+        if (prevProps.location && prevProps.location.search !== this.props.location.search) {
             this.performSearch();
         }
     }
 
     componentDidMount() {
-        this.performSearch();
+        if (this.checkIfValidSearch()) {
+            this.performSearch();
+        } else {
+            this.setState({ loading: false });
+            // modify history and programatically redirect to the root page
+            if (this.props.history) {
+                this.props.history.push({ pathname: '/' });
+            }
+        }
+    }
+
+    // check if the parameters match search
+    checkIfValidSearch = () => {
+        if (!this.props.location)
+            return false;
+
+        const searchValues = queryString.parse(this.props.location.search);
+
+        return (Object.keys(searchValues)[0] !== null &&
+            Object.keys(searchValues).length > 0 &&
+            Object.keys(searchValues)[0] === 'search' &&
+            Object.values(searchValues)[0] !== null && 
+            Object.values(searchValues)[0] !== '' && 
+            Object.values(searchValues).length > 0);
     }
 
     // search for items to display
@@ -31,7 +55,8 @@ class ListItems extends Component {
                 results: results.items,
                 categories: results.categories,
                 loading: false
-            }));
+            }))
+            .catch(error => console.log(error));
     };
 
     render() {
