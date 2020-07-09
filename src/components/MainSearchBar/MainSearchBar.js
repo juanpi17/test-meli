@@ -14,36 +14,20 @@ class MainSearchBar extends Component {
         startNewSearch: false
     }
 
-    // start fresh
-    // componentDidMount() {
-    //     // this.setState({
-    //     //     searchString: ''
-    //     // })
-    // }
-
     componentDidUpdate() {
-        // document.title = `You clicked ${this.state.count} times`;
-        // console.log(this.state.searchString);
         if (this.state.startNewSearch) {
             this.startSearch();
-            // this.setState({ startNewSearch: false });
         }
-        // console.log(this.state.searchString.replace(/[&\/\\#,+()$~%.'":*?<>={}]/g,'_'));
     }
 
     // prepare string to start the search
     startSearch = () => {
-        console.log(this.state.searchString);
         // perform a search if the search string has some data and the form was submitted
         if (this.state.searchString) {
             // remove special chars from search string
             let curedSearchString = this.state.searchString.replace(/[&\\#,+()$~%.'":*?<>={}]/g,'_');
             // remove multiple spaces and leading/trailing ones
             curedSearchString = curedSearchString.replace(/\s+/g, " ").trim();
-            // // update state
-            // this.setState({
-            //     searchString: curedSearchString
-            // })
 
             // modify history and programatically call router with the new path
             this.props.history.push({ pathname: '/items', search: `search=${curedSearchString}` });
@@ -59,46 +43,13 @@ class MainSearchBar extends Component {
         // set status of search as true to start searching
         this.setState({ startNewSearch: true });
         this.startSearch();
-
-        // // perform a search if the search string has some data and the form was submitted
-        // if (this.state.searchString) {
-        //     // remove special chars from search string
-        //     let curedSearchString = this.state.searchString.replace(/[&\\#,+()$~%.'":*?<>={}]/g,'_');
-        //     // remove multiple spaces and leading/trailing ones
-        //     curedSearchString = curedSearchString.replace(/\s+/g, " ").trim();
-        //     // update state
-        //     this.setState({
-        //         searchString: curedSearchString
-        //     })
-
-        //     // modify history and programatically call router with the new path
-        //     this.props.history.push({ pathname: '/items', search: `search=${curedSearchString}` });
-        // }
     }
 
-
-    // handleSubmitSearch = e => {
-    //     e.preventDefault();
-
-    //     // perform a search if the search string has some data and the form was submitted
-    //     if (this.state.searchString) {
-    //         // remove special chars from search string
-    //         let curedSearchString = this.state.searchString.replace(/[&\\#,+()$~%.'":*?<>={}]/g,'_');
-    //         // remove multiple spaces and leading/trailing ones
-    //         curedSearchString = curedSearchString.replace(/\s+/g, " ").trim();
-    //         // update state
-    //         this.setState({
-    //             searchString: curedSearchString
-    //         })
-
-    //         // modify history and programatically call router with the new path
-    //         this.props.history.push({ pathname: '/items', search: `search=${curedSearchString}` });
-    //     }
-    // }
+    placeholderLegend = () => {
+        return "Nunca dejes de buscar";
+    }
     
     render() {
-        const placeholder = "Nunca dejes de buscar";
-
         return (
             <header className="nav-header">
                 <div className="container">
@@ -115,7 +66,7 @@ class MainSearchBar extends Component {
                                     <input className="form-control rounded-left border border-light no-shadow h-100" 
                                         type="search"
                                         value={this.state.searchString}
-                                        placeholder={placeholder}
+                                        placeholder={this.placeholderLegend()}
                                         aria-label="Search"
                                         onChange={e => this.setState({ searchString: e.target.value })} />
                                     <button className="btn btn-light rounded-right border border-light no-shadow" type="submit" aria-label="Search">

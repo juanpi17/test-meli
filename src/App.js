@@ -17,11 +17,12 @@ class App extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
+                                
                                 {/* Process the different routes to the components that will handle them */}
                                 <Switch>
                                     <Route exact path="/" />
                                     <Route exact path="/items" component={ListItems} />
-                                    <Route path="/items/:id" component={ItemDetails} />
+                                    <Route exact path="/items/:id" component={ItemDetails} />
                                     <Route render={() => <h2 className="text-center mt-5">404 - Page not found</h2>} />
                                 </Switch>
 

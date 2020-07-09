@@ -10,18 +10,6 @@ class ListItems extends Component {
         results: [],
         categories: [],
         loading: true,
-
-        // results: [
-        //     {
-        //         location: "Santa Fe"
-        //     },
-        //     {
-        //         location: "Capital Federal"
-        //     },
-        //     {
-        //         location: "Mendoza"
-        //     }
-        // ]
     };
 
     componentDidUpdate(prevProps) {
@@ -32,35 +20,19 @@ class ListItems extends Component {
     }
 
     componentDidMount() {
-    // componentDidUpdate() {
         this.performSearch();
-    //     // document.title = `You clicked ${this.state.count} times`;
-    //     console.log(this.state.searchString);
-    //     // console.log(this.state.searchString.replace(/[&\/\\#,+()$~%.'":*?<>={}]/g,'_'));
     }
 
+    // search for items to display
     performSearch = async () => {
-        const searchValues = queryString.parse(this.props.location.search);
-        console.log(searchValues); // "search"
-
         // create a request to the local endpoint
-        const resultsList = await fetch(this.props.location.search)
+        await fetch(this.props.location.search)
             .then(res => res.json())
             .then(results => this.setState({
                 results: results.items,
                 categories: results.categories,
                 loading: false
             }));
-            // .then(results => console.log(results.categories));
-        // // fetchItems = async () => {
-        // const user = await fetch('/users/1')
-        //     .then(res => res.json()) // Process the incoming data
-
-        // // Update usersList state
-        // // setUsersList(users)
-        // this.setState({ searchString: user });
-    
-        // // }
     };
 
     render() {
@@ -71,7 +43,6 @@ class ListItems extends Component {
                 (this.state.loading)
                 ? <p>Loading</p>
                 : <React.Fragment>
-                    {console.log(this.state.categories)}
                     <Breadcrumbs categories={ this.state.categories } />
                     <div className="container results-list">
                         {this.state.results && 

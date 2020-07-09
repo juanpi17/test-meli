@@ -1,9 +1,10 @@
 import React from 'react'
 
+// build breadcrumbs. Home will be always displayed as 'Productos'
 const Breadcrumbs = ({ categories }) => {
     return (
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-custom">
+            <ol className="breadcrumb breadcrumb-custom">
                 <li key={'category-product'} className="breadcrumb-item">Productos</li>
                 {
                     (categories.length) 

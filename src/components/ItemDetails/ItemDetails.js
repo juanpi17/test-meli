@@ -1,77 +1,59 @@
 import React, { Component } from 'react';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 import imagePlaceholder from './../../assets/image-placeholder.jpg';
 
 class ItemDetail extends Component {
 
     state = {
         details: [],
+        categories: [],
         loading: true,
-
-        // results: [
-        //     {
-        //         location: "Santa Fe"
-        //     },
-        //     {
-        //         location: "Capital Federal"
-        //     },
-        //     {
-        //         location: "Mendoza"
-        //     }
-        // ]
     };
 
-    // componentDidUpdate(prevProps) {
-    //     // only perform search if the search parameter has changed
-    //     if (prevProps.location.search !== this.props.location.search) {
-    //         this.performSearch();
-    //     }
-    // }
-
     componentDidMount() {
-        // obtain id of the item
-        //const id = this.props.match.params.id;
         this.obtainItem();
-
-        console.log(this.props.match);
-    //     // document.title = `You clicked ${this.state.count} times`;
-    //     console.log(this.state.searchString);
-    //     // console.log(this.state.searchString.replace(/[&\/\\#,+()$~%.'":*?<>={}]/g,'_'));
     }
 
     obtainItem = async () => {
-        // const searchValues = queryString.parse(this.props.location);
-        // console.log(this.props); // "search"
-
         // create a request to the local endpoint
-        const resultsList = await fetch(this.props.match.url)
+        await fetch(this.props.match.url)
             .then(res => res.json())
             .then(results => this.setState({
                 details: results.item,
+                categories: this.state.categories.concat(results.item.title),
                 loading: false
             }));
-        // // fetchItems = async () => {
-        // const user = await fetch('/users/1')
-        //     .then(res => res.json()) // Process the incoming data
-
-        // // Update usersList state
-        // // setUsersList(users)
-        // this.setState({ searchString: user });
-    
-        // // }
     };
+
+    // modify price to adjust it to the requested format (thousands separator)
+    priceFormat = (amount) => {
+        return Math.trunc(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    // modify decimals to adjust it to the requested format (2 digits)
+    decimalsFormat = (decimals) => {
+        return ("0" + decimals).slice(-2)
+    }
+
+    // create string with the combination of the condition and quantity sold of a item
+    conditionFormat = (condition, sold_quantity) => {
+        let cond = (condition === 'new') ? 'Nuevo' : ( (condition === 'used') ? 'Usado' : condition );
+        let qty = (sold_quantity > 0) ? ` - ${sold_quantity} ${( (sold_quantity !== 1) ? 'vendidos' : 'vendido' )}` : '';
+        return `${cond} ${qty}`;
+    }
 
     render() {
 
         return (
 
-            <section className="results-section">
+            <section className="details-section">
             {
                 (this.state.loading)
                 ? <p>Loading</p>
                 : <React.Fragment>
-                    <Breadcrumbs />
+                    { console.log(this.state.details) }
+                    <Breadcrumbs categories={ this.state.categories } />
                     <div className="item-details">
                         <div className="container">
                             <div className="row details-page">
@@ -92,26 +74,16 @@ class ItemDetail extends Component {
                                 </div>
                                 <div className="col-md details-right pr-0">
                                     <div className="item-condition-quantity">
-                                        <span>{this.state.details.condition}
-                                        {
-                                            (this.state.details.sold_quantity > 0)
-                                                ? ` - ${this.state.details.sold_quantity} 
-                                                    ${(this.state.details.sold_quantity !== 1)
-                                                    ? 'vendidos'
-                                                    : 'vendido' 
-                                                    } `
-                                                : ''
-                                        }
-                                        </span>
+                                        <span>{this.conditionFormat(this.state.details.condition, this.state.details.sold_quantity)}</span>
                                     </div>
                                     <div className="item-title">
                                         <span>{this.state.details.title}</span>
                                     </div>
                                     <div className="item-price">
                                         <span className="integer-part">
-                                            $ {Math.trunc(this.state.details.price.amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                                            $ {this.priceFormat(this.state.details.price.amount)}
                                             <span className="cents">
-                                                {("0" + this.state.details.price.decimals).slice(-2)}
+                                                {this.decimalsFormat(this.state.details.price.decimals)}
                                             </span>
                                         </span>
                                     </div>
@@ -127,4 +99,4 @@ class ItemDetail extends Component {
     }
 }
 
-export default withRouter(ItemDetail);
+export default ItemDetail;
