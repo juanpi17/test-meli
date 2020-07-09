@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Loader from 'react-loader-spinner';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 class ItemDetails extends Component {
 
@@ -55,47 +56,55 @@ class ItemDetails extends Component {
                     color="#999999"
                     height={100}
                     width={100} />
-                : <React.Fragment>
-                    <Breadcrumbs categories={ this.state.categories } />
-                    <div className="item-details">
-                        <div className="container">
-                            <div className="row details-page">
-                                <div className="col-lg-8 pl-lg-0 col-xl-9 details-left order-2 order-lg-1">
-                                    <div className="image-container">
-                                        <img src={this.state.details.picture} srcSet={`${this.state.details.picture2x} 2x`} alt='placeholder' className="main-image m-auto" />
-                                    </div>
-                                    <div className="description">
-                                        <div className="description-title">
-                                            <span>Descripción del producto</span>
+                : 
+                <HelmetProvider>
+                    <React.Fragment>
+                        <Helmet>
+                            <title>{this.state.details.title}</title>
+                            <meta name="description" content={this.state.details.description} />
+                        </Helmet>
+
+                        <Breadcrumbs categories={ this.state.categories } />
+                        <div className="item-details">
+                            <div className="container">
+                                <div className="row details-page">
+                                    <div className="col-lg-8 pl-lg-0 col-xl-9 details-left order-2 order-lg-1">
+                                        <div className="image-container">
+                                            <img src={this.state.details.picture} srcSet={`${this.state.details.picture2x} 2x`} alt='placeholder' className="main-image m-auto" />
                                         </div>
-                                        <div className="description-body">
-                                            <span>
-                                                {this.state.details.description}
+                                        <div className="description">
+                                            <div className="description-title">
+                                                <span>Descripción del producto</span>
+                                            </div>
+                                            <div className="description-body">
+                                                <span>
+                                                    {this.state.details.description}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg details-right pr-lg-0 order-1 order-lg-2">
+                                        <div className="item-condition-quantity">
+                                            <span>{this.conditionFormat(this.state.details.condition, this.state.details.sold_quantity)}</span>
+                                        </div>
+                                        <div className="item-title">
+                                            <span>{this.state.details.title}</span>
+                                        </div>
+                                        <div className="item-price">
+                                            <span className="integer-part">
+                                                $ {this.priceFormat(this.state.details.price.amount)}
+                                                <span className="cents">
+                                                    {this.decimalsFormat(this.state.details.price.decimals)}
+                                                </span>
                                             </span>
                                         </div>
+                                        <button className="btn btn-info w-100 mb-3 mb-lg-0">Comprar</button>
                                     </div>
-                                </div>
-                                <div className="col-lg details-right pr-lg-0 order-1 order-lg-2">
-                                    <div className="item-condition-quantity">
-                                        <span>{this.conditionFormat(this.state.details.condition, this.state.details.sold_quantity)}</span>
-                                    </div>
-                                    <div className="item-title">
-                                        <span>{this.state.details.title}</span>
-                                    </div>
-                                    <div className="item-price">
-                                        <span className="integer-part">
-                                            $ {this.priceFormat(this.state.details.price.amount)}
-                                            <span className="cents">
-                                                {this.decimalsFormat(this.state.details.price.decimals)}
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <button className="btn btn-info w-100 mb-3 mb-lg-0">Comprar</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </React.Fragment>
+                    </React.Fragment>
+                </HelmetProvider>
             }
             </section>
         );
