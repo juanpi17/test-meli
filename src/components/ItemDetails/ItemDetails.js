@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
 
-class ItemDetail extends Component {
+class ItemDetails extends Component {
 
     state = {
         details: [],
@@ -96,4 +96,4 @@ class ItemDetail extends Component {
     }
 }
 
-export default ItemDetail;
+export default ItemDetails;

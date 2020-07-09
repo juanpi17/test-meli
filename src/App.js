@@ -12,7 +12,7 @@ class App extends Component {
     render () {
         return (
             <Router>
-                <div className="main">
+                <main className="main">
                     <MainSearchBar />
                     <div className="container">
                         <div className="row">
@@ -29,7 +29,7 @@ class App extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </main>
             </Router>
         );
     }

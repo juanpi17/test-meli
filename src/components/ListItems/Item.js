@@ -4,14 +4,22 @@ import shippingIcon from './../../assets/ic_shipping.png';
 import shippingIcon2x from './../../assets/ic_shipping@2x.png.png';
 
 const Item = (props) => {
-    const item = props.item;
+    const item = (props.item) 
+                ? props.item 
+                : { 
+                    id: 0,
+                    picture: '',
+                    picture2x: '',
+                    title: '',
+                    location: ''
+                };
 
     // get the price and apply required format
-    let amount = Math.trunc(item.price.amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    let amount = (item && item.price && item.price.amount) ? Math.trunc(item.price.amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : 0;
 
     // check if the item has free shipping
     var free_shipping;
-    if (item.free_shipping) {
+    if (item && item.free_shipping) {
         free_shipping = <img src={shippingIcon} srcSet={`${shippingIcon2x} 2x`} alt='shipping-icon' className="img-fluid" />;
     } else {
         free_shipping = "";

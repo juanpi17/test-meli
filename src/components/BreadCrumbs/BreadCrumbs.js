@@ -7,7 +7,7 @@ const Breadcrumbs = ({ categories }) => {
             <ol className="breadcrumb breadcrumb-custom">
                 <li key={'category-product'} className="breadcrumb-item">Productos</li>
                 {
-                    (categories.length) 
+                    (categories && categories.length > 0) 
                     ?  categories.map((category, index) => <li key={index} className="breadcrumb-item">{category}</li>)
                     :  ''
                 }
