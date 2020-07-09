@@ -34,4 +34,4 @@ npm start
 npm test
 ```
 
-> Ejecuta los tests para la aplicación principal como para los diferentes componentes. 
+> Ejecuta los tests tanto para la aplicación principal como para los diferentes componentes que la componen. 
