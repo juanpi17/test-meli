@@ -29,7 +29,7 @@ const Item = (props) => {
         
         <Link className="item-result" to={`/items/${item.id}`}>
             <div className="row item-body">
-                <div className="col-md-auto px-0">
+                <div className="text-center text-md-left col-md-auto px-0">
                     <img src={item.picture} srcSet={`${item.picture2x} 2x`} alt='thumb' className="thumb-image" />
                 </div>
                 <div className="col-md-6">
