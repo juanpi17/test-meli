@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import queryString from 'query-string';
-
 import Item from './Item';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
 

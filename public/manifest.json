@@ -1,6 +1,7 @@
 {
   "short_name": "Meli React App",
   "name": "Mercado Libre React App",
+  "author": "Juan Pablo Lepore",
   "icons": [
     {
       "src": "favicon.ico",

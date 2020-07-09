@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Breadcrumbs from '../BreadCrumbs/BreadCrumbs';
-// import { withRouter } from "react-router-dom";
-import imagePlaceholder from './../../assets/image-placeholder.jpg';
 
 class ItemDetail extends Component {
 
