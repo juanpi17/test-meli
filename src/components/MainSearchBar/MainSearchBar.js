@@ -54,12 +54,12 @@ class MainSearchBar extends Component {
             <header className="nav-header">
                 <div className="container">
                     <div className="row align-items-center">
-                        <div className="col-3 col-md-1 my-auto">
+                        <div className="col-3 col-lg-1 my-auto">
                             <Link to="/" className="navbar-brand">
                                 <img src={logo} srcSet={`${logo2x} 2x`} alt='logoIcon' className="logoIcon" />
                             </Link>
                         </div>
-                        <div className="col-9 col-md-11 pl-0">
+                        <div className="col-9 col-lg-11 pl-0">
                             <form className="search-component"
                                 onSubmit={this.handleSubmitSearch}>
                                 <div className="input-group">

@@ -60,7 +60,7 @@ class ItemDetails extends Component {
                     <div className="item-details">
                         <div className="container">
                             <div className="row details-page">
-                                <div className="col-md-9 pl-md-0 details-left order-2 order-md-1">
+                                <div className="col-lg-8 pl-lg-0 col-xl-9 details-left order-2 order-lg-1">
                                     <div className="image-container">
                                         <img src={this.state.details.picture} srcSet={`${this.state.details.picture2x} 2x`} alt='placeholder' className="main-image m-auto" />
                                     </div>
@@ -75,7 +75,7 @@ class ItemDetails extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md details-right pr-md-0 order-1 order-md-2">
+                                <div className="col-lg details-right pr-lg-0 order-1 order-lg-2">
                                     <div className="item-condition-quantity">
                                         <span>{this.conditionFormat(this.state.details.condition, this.state.details.sold_quantity)}</span>
                                     </div>
@@ -90,7 +90,7 @@ class ItemDetails extends Component {
                                             </span>
                                         </span>
                                     </div>
-                                    <button className="btn btn-info w-100 mb-3 mb-md-0">Comprar</button>
+                                    <button className="btn btn-info w-100 mb-3 mb-lg-0">Comprar</button>
                                 </div>
                             </div>
                         </div>
