@@ -60,9 +60,9 @@ class ItemDetails extends Component {
                     <div className="item-details">
                         <div className="container">
                             <div className="row details-page">
-                                <div className="col-md-9 pl-0 details-left">
+                                <div className="col-md-9 pl-md-0 details-left order-2 order-md-1">
                                     <div className="image-container">
-                                        <img src={this.state.details.picture} srcSet={`${this.state.details.pictureFull} 2x`} alt='placeholder' className="main-image m-auto" />
+                                        <img src={this.state.details.picture} srcSet={`${this.state.details.picture2x} 2x`} alt='placeholder' className="main-image m-auto" />
                                     </div>
                                     <div className="description">
                                         <div className="description-title">
@@ -75,7 +75,7 @@ class ItemDetails extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md details-right pr-0">
+                                <div className="col-md details-right pr-md-0 order-1 order-md-2">
                                     <div className="item-condition-quantity">
                                         <span>{this.conditionFormat(this.state.details.condition, this.state.details.sold_quantity)}</span>
                                     </div>
@@ -90,7 +90,7 @@ class ItemDetails extends Component {
                                             </span>
                                         </span>
                                     </div>
-                                    <button className="btn btn-info w-100">Comprar</button>
+                                    <button className="btn btn-info w-100 mb-3 mb-md-0">Comprar</button>
                                 </div>
                             </div>
                         </div>

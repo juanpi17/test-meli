@@ -40,7 +40,7 @@
             }
         }
 
-        @include media-breakpoint-up(sm) {
+        @include media-breakpoint-up(md) {
             .price-shipping {
                 margin-bottom: 32px;
             }

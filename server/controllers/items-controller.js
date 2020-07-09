@@ -90,7 +90,7 @@ exports.itemsGetOne = async (req, res) => {
                                 lastname: "Lepore"
                             },
 
-                            // as I did before, I've added an extra 'pictureFull' field to render an image with a bigger resolution 
+                            // as I did before, I've added an extra 'picture2x' field to render an image with a bigger resolution 
                             item: {
                                 id: itemData.id,
                                 title: itemData.title,
@@ -100,7 +100,7 @@ exports.itemsGetOne = async (req, res) => {
                                     decimals: (itemData.price + "").indexOf(".") != -1 ? (itemData.price + "").split(".")[1] : 0,
                                 },
                                 picture: itemData.thumbnail,
-                                pictureFull: itemData.thumbnail.replace(/(-I)(\.[\w\d_-]+)$/i, '-F$2'),
+                                picture2x: itemData.thumbnail.replace(/(I\.[\w\d_-]+)$/i, 'I$1'),
                                 condition: itemData.condition,
                                 free_shipping: itemData.shipping.free_shipping,
                                 sold_quantity: itemData.sold_quantity,
