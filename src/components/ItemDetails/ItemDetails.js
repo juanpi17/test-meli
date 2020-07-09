@@ -50,7 +50,6 @@ class ItemDetail extends Component {
                 (this.state.loading)
                 ? <p>Loading</p>
                 : <React.Fragment>
-                    { console.log(this.state.details) }
                     <Breadcrumbs categories={ this.state.categories } />
                     <div className="item-details">
                         <div className="container">
