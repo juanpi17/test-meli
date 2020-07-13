@@ -1,5 +1,7 @@
 # Test práctico de Front End para Mercado Libre 
 
+Se utilizó Bootstrap 4 como base para el diseño responsive de la aplicación.
+
 ## Tecnologías utilizadas
 
 * Node.js v12.18.2
